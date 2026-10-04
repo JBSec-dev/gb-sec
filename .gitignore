@@ -1,0 +1,27 @@
+# Build artefacts
+build/
+firmware/build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Pico SDK / generated outputs
+*.uf2
+*.elf
+*.bin
+*.hex
+*.map
+*.dis
+*.lst
+
+# Editors / OS
+.vscode/*.log
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
