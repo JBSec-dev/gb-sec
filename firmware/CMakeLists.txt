@@ -6,17 +6,22 @@ set(PICO_BOARD pico2_w CACHE STRING "Target Pico board")
 # Standard Raspberry Pi helper for locating/importing the Pico SDK.
 include(pico_sdk_import.cmake)
 
+# Declares the project and its supported languages (C, C++, and assembly).
 project(gb_sec C CXX ASM)
 
+# Set the C and C++ standards to be used for compiling the project.
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
+# Initialize the Pico SDK. This must be called before any other SDK functions.
 pico_sdk_init()
 
+# Add the main executable target for the project, specifying the source files to be compiled.
 add_executable(gb_sec
     src/main.c
 )
 
+# Link the Pico standard library to the executable target, providing essential functions and utilities for the Raspberry Pi Pico.
 target_link_libraries(gb_sec
     pico_stdlib
 )
@@ -25,6 +30,7 @@ target_link_libraries(gb_sec
 pico_enable_stdio_usb(gb_sec 1)
 pico_enable_stdio_uart(gb_sec 0)
 
+# Set compiler options for the target, enabling all warnings and extra warnings to help catch potential issues during development.
 target_compile_options(gb_sec PRIVATE
     -Wall
     -Wextra
