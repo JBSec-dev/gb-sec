@@ -24,7 +24,9 @@ Filetypes:
     - hex: an Intel HEX representation of the firmware, where address/data information is stored as textual records.
     - uf2: a firmware file specifically packaged for the Pico's BOOTSEL.
 
-- The uf2 file is a specially formatted container that holds the firmware. The machine code is wrapped inside 512-byte blocks. 
+- The uf2 file is a specially formatted container that holds the firmware. The machine code is wrapped inside 512-byte blocks.
+
+- CYW43 is a wireless microcontroller driver and system-on-chip (SoC) interface used to control the Infineon CYW43439 Wi-Fi and Bluetooth chip found on boards like the Raspberry Pi Pico W. The built-in LED light on the Pico 2 was used to conduct a "blinking test". This LED is part of the of the wireless chip, hence the reason to use CYW43 rather than directly controlling by a normal RP2350 GPIO. 
 
 **Questions / follow-up**
 
