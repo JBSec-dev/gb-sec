@@ -38,6 +38,7 @@ add_executable(gb_sec
 # Link the Pico standard library to the executable target, providing essential functions and utilities for the Raspberry Pi Pico.
 target_link_libraries(gb_sec
     pico_stdlib
+    pico_cyw43_arch_none
 )
 
 # USB serial is useful during development; UART can be enabled later when needed.

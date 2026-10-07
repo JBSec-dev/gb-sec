@@ -1,14 +1,21 @@
 #include "pico/stdlib.h"
+#include "pico/cyw43_arch.h"
 
 int main(void)
 {
-    // Initialise the Pico SDK's standard I/O subsystem.
-    // USB serial is enabled in CMake for future diagnostic output.
     stdio_init_all();
 
-    // The first milestone is intentionally a minimal, valid firmware image.
-    // Hardware-specific behaviour will be added incrementally.
+    // Initialise the CYW43 wireless chip.
+    // On the Pico 2 W, the onboard LED is controlled through this chip.
+    if (cyw43_arch_init()) {
+        return 1;
+    }
+
     while (true) {
-        tight_loop_contents();
+        cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
+        sleep_ms(500);
+
+        cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 0);
+        sleep_ms(500);
     }
 }
