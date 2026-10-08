@@ -4,7 +4,7 @@
 
 GB-Sec is a handheld games-console project designed primarily as a learning platform.
 
-The first version will be a breadboard prototype using a Raspberry Pi Pico 2 W, an SPI LCD, and physical buttons. The project will then grow in stages: first into a small games platform, then into a custom embedded system, and finally into a hardware-security lab containing both intentionally insecure and hardened designs.
+The first version is a breadboard prototype using a Raspberry Pi Pico 2 W, an SPI LCD, and physical buttons. The project will then grow in stages: first into a small games platform, then into a custom embedded system, and finally into a hardware-security lab containing both intentionally insecure and hardened designs.
 
 The objective is not simply to produce a working handheld. The objective is to understand the layers that make it work.
 
@@ -79,13 +79,25 @@ Move from development modules to a custom PCB and enclosure.
 5. **Separate observation from assumption.** Documentation should distinguish what was measured from what was expected.
 6. **Do not make security claims without a threat model.** A feature is not "secure" merely because it uses cryptography.
 
-## First milestone
+## Current milestone status
 
-Before hardware arrives:
+### Phase 0 — complete
 
-1. create a reproducible Pico 2 W build;
-2. understand the source → compiler → linker → firmware-image pipeline;
-3. document the environment;
-4. keep the generated build artefacts out of Git.
+- Reproducible Pico 2 W build environment established.
+- VS Code Pico extension, CMake, Ninja, compiler/linker and Pico SDK build path tested.
+- BOOTSEL flashing confirmed.
+- Generated build artefacts kept out of Git.
 
-Once hardware arrives, the first physical milestone will be reading one push button reliably from GPIO.
+### Phase 1 — in progress
+
+The first physical I/O and display milestones are now working:
+
+- button input using GPIO and internal pull-ups;
+- Pico 2 W onboard LED control through CYW43;
+- ST7789 display bring-up over SPI0;
+- RGB565 full-screen colour fills;
+- rectangular region drawing;
+- four-direction button input;
+- a small square that can be moved around the screen while remaining inside the display boundaries.
+
+The next step is to turn the bring-up code into small input/display abstractions and then build toward a simple game loop and Pong.

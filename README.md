@@ -6,9 +6,11 @@ The project starts as a simple embedded C/C++ games console and will gradually e
 
 ## Current status
 
-**Phase 0 — project setup and development environment**
+**Phase 1 — basic hardware I/O and display bring-up**
 
-Hardware is on order. The immediate goal is to establish a reproducible build environment and document the engineering decisions before connecting the first components.
+The first breadboard prototype is running. The Pico 2 W can read physical buttons, drive the onboard LED, communicate with the 240x320 ST7789 display over SPI, draw RGB565 colours/rectangles, and move a small square around the screen using four directional buttons.
+
+The next step is to refactor the working bring-up code into small display/input components and then build toward a simple game such as Pong.
 
 ## Initial hardware
 
@@ -16,6 +18,7 @@ Hardware is on order. The immediate goal is to establish a reproducible build en
 - 2" SPI IPS LCD using an ST7789 controller
 - Momentary tactile push buttons
 - Breadboard and jumper wires
+- USB power
 
 Later revisions are expected to add storage, audio, a custom PCB, battery power, and deliberately vulnerable/hardened security features.
 
@@ -44,7 +47,7 @@ gb-sec/
 
 The project is intentionally incremental. Important code should be understood rather than copied blindly, and failed experiments should be documented alongside successful ones.
 
-The first firmware milestone is deliberately small: build a valid Pico 2 W firmware image before the hardware arrives. Once the board is available, the next milestones are GPIO input, display communication, graphics primitives, and a simple game loop.
+So far the prototype has progressed through GPIO input, display communication, RGB565 graphics primitives and a basic input/update/render loop. The project will continue to build these pieces up gradually rather than introducing a large framework before the underlying behaviour is understood.
 
 ## Build
 
@@ -58,8 +61,9 @@ Start with:
 
 - [Project overview](docs/00-project-overview.md)
 - [Development environment](docs/01-development-environment.md)
-- [Learning journal](notes/learning-journal.md)
+- [Learning journal](notes/learning-journal/)
 - [Debugging log](notes/debugging-log.md)
+- [Hardware notes and current pin assignments](hardware/README.md)
 
 ## Licence
 
