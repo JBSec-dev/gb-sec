@@ -39,6 +39,7 @@ add_executable(gb_sec
 target_link_libraries(gb_sec
     pico_stdlib
     pico_cyw43_arch_none
+    hardware_spi
 )
 
 # USB serial is useful during development; UART can be enabled later when needed.
